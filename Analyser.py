@@ -8,3 +8,4 @@ with open(filename) as fobj:
 
 cc = cc_visit(source)
 print(cc[0].complexity)
+
