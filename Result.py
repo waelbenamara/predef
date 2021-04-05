@@ -1,4 +1,4 @@
-class Output:
+class Result:
     def __init__(self, NumberOfOperators, NumberOfOperands, TotalNumberOfOperators, TotalNumberOfOperands, HalsteadProgramLength, LinesOfCode, McCabeCyclomaticComplexity, LinesOfComments):
         self.NumberOfOperators = NumberOfOperators
         self.NumberOfOperands = NumberOfOperands
