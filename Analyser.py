@@ -40,11 +40,13 @@ class Analyser:
 		return self.halsteadMetrics.total[5]
 
 	def linesOfCode(self):
-		return self.rawMetrics.loc
+		return self.rawMetrics.lloc
 
 	def linesOfComments(self):
 		return self.rawMetrics.comments
 
+
+'''
 if __name__ == "__main__":
 	projectFiles = fileExplorer.exploreFiles("flask-website")
 	#print(projectFiles)
@@ -61,3 +63,4 @@ if __name__ == "__main__":
   	# 	remove("projectFile.py")
 	# else:
   	# 	print("The file does not exist")
+'''

@@ -2,7 +2,8 @@ from flask import Flask, request,jsonify
 from Project import Project
 from git import Repo
 import uuid
-
+import json
+from Result import Result
 
 
 app = Flask(__name__)
@@ -17,11 +18,12 @@ def analyse():
 	repo_dir = "./projects/"+ project_id
 	Repo.clone_from(git_url, repo_dir)
 	project = Project(repo_dir)
+	project.analyse()
+	result = Result(project)
+	output = json.dumps(result.__dict__)
 
 
-
-
-	return "cloned in "+ repo_dir
+	return output
 
 
 
@@ -29,4 +31,4 @@ def analyse():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=3030)	
+    app.run(host="0.0.0.0",port=3030,debug = False)	
