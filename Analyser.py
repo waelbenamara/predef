@@ -1,7 +1,7 @@
 from radon.complexity import average_complexity, cc_visit
 from radon.raw import analyze
 from radon.metrics import h_visit
-import fileExplorer
+import FileExplorer
 from os import remove, path
 
 class Analyser:
@@ -46,9 +46,9 @@ class Analyser:
 		return self.rawMetrics.comments
 
 if __name__ == "__main__":
-	projectFiles = fileExplorer.exploreFiles("p1")
-	print(projectFiles)
-	fileExplorer.mergeFiles(projectFiles)
+	projectFiles = FileExplorer.exploreFiles("flask-website")
+	#print(projectFiles)
+	FileExplorer.mergeFiles(projectFiles,"projectFile")
 	analyzer = Analyser("projectFile.py")
 	print(analyzer.halsteadProgramLength())
 	print(analyzer.linesOfCode())
@@ -57,7 +57,7 @@ if __name__ == "__main__":
 	print(analyzer.numberOfOperators())
 	print(analyzer.totalNumberOfOperands())
 	print(analyzer.totalNumberOfOperators())
-	if path.exists("projectFile.py"):
-  		remove("projectFile.py")
-	else:
-  		print("The file does not exist")
+	# if path.exists("projectFile.py"):
+  	# 	remove("projectFile.py")
+	# else:
+  	# 	print("The file does not exist")
