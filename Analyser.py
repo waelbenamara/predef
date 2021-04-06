@@ -1,7 +1,7 @@
 from radon.complexity import average_complexity, cc_visit
 from radon.raw import analyze
 from radon.metrics import h_visit
-import FileExplorer
+import fileExplorer
 from os import remove, path
 
 class Analyser:
@@ -46,9 +46,9 @@ class Analyser:
 		return self.rawMetrics.comments
 
 if __name__ == "__main__":
-	projectFiles = FileExplorer.exploreFiles("flask-website")
+	projectFiles = fileExplorer.exploreFiles("flask-website")
 	#print(projectFiles)
-	FileExplorer.mergeFiles(projectFiles,"projectFile")
+	fileExplorer.mergeFiles(projectFiles,"projectFile")
 	analyzer = Analyser("projectFile.py")
 	print(analyzer.halsteadProgramLength())
 	print(analyzer.linesOfCode())
