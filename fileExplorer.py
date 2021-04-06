@@ -12,12 +12,13 @@ def exploreFiles(rootPath):
             exploreFiles(os.path.join(rootPath, file))
     return filesList
 
-def mergeFiles(files):
-    with open('projectFile.py', 'w') as outfile:
+def mergeFiles(files,rootPath):
+    with open(rootPath+'.py', 'w') as outfile:
      for file in files:
         with open(file) as infile:
             outfile.write(infile.read())
         outfile.write("\n")
+        return rootPath+".py"
 
 # if __name__ == "__main__":
 #    print(exploreFiles("p1"))
