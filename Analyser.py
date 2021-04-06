@@ -1,6 +1,8 @@
 from radon.complexity import average_complexity, cc_visit
 from radon.raw import analyze
 from radon.metrics import h_visit
+import fileExplorer
+from os import remove, path
 
 class Analyser:
 	def __init__(self, filename):
@@ -9,12 +11,10 @@ class Analyser:
 		self.rawMetrics = self.generateRawMetrics()
 		self.mcCabeMetrics = self.cyclomaticComplexity()
 		self.halsteadMetrics = self.generateHalsteadMetrics()
-		
 	
 	def cyclomaticComplexity(self):
 		cc = cc_visit(self.sourceFile)
 		return average_complexity(cc)
-
 
 	def generateRawMetrics(self):
 		raw = analyze(self.sourceFile)
@@ -23,7 +23,6 @@ class Analyser:
 	def generateHalsteadMetrics(self):
 		hl = h_visit(self.sourceFile)
 		return hl
-
 
 	def numberOfOperators(self):
 		return self.halsteadMetrics.total[0]
@@ -47,7 +46,10 @@ class Analyser:
 		return self.rawMetrics.comments
 
 if __name__ == "__main__":
-	analyzer = Analyser("test.py")
+	projectFiles = fileExplorer.exploreFiles("p1")
+	print(projectFiles)
+	fileExplorer.mergeFiles(projectFiles)
+	analyzer = Analyser("projectFile.py")
 	print(analyzer.halsteadProgramLength())
 	print(analyzer.linesOfCode())
 	print(analyzer.linesOfComments())
@@ -55,3 +57,7 @@ if __name__ == "__main__":
 	print(analyzer.numberOfOperators())
 	print(analyzer.totalNumberOfOperands())
 	print(analyzer.totalNumberOfOperators())
+	if path.exists("projectFile.py"):
+  		remove("projectFile.py")
+	else:
+  		print("The file does not exist")

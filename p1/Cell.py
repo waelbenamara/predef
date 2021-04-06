@@ -17,15 +17,11 @@ class Cell:
 	def list_ordered_adj(self):
 		return [self.west,self.north,self.east,self.south]
 		
-	def preOrderDFS(self,root)
+	def preOrderDFS(self,root):
 		if root:
 			print(root.x,root.y)
 			self.preOrderDFS(root.west)
 			self.preOrderDFS(root.north)
 			self.preOrderDFS(root.east)
 			self.preOrderDFS(root.south)
-
-
-
-
 
